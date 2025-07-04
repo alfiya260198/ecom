@@ -1,12 +1,17 @@
-// src/App.js
-import React from 'react';
-import ProductsList from './components/ProductsList';
+import React, { useState } from 'react';
+import CartDrawer from './components/CartDrawer';
+import AppNavbar from './components/AppNavbar';
+import ProductsList from './components/ProductsList'; 
 
 function App() {
+  const [showCart, setShowCart] = useState(false);
+
   return (
-    <div>
+    <>
+      <AppNavbar onCartClick={() => setShowCart(true)} />
       <ProductsList />
-    </div>
+      <CartDrawer show={showCart} handleClose={() => setShowCart(false)} />
+    </>
   );
 }
 
