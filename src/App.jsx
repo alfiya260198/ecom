@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CartDrawer from './components/CartDrawer';
 import AppNavbar from './components/AppNavbar';
 import ProductsList from './components/ProductsList';
-import { CartProvider } from './components/CartContext'; // 🆕
+import Home from './components/Home/Home';
+import { CartProvider } from './components/CartContext';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
 
   return (
-    <CartProvider> {/* 🧠 Wrap inside App.js */}
-      <AppNavbar onCartClick={() => setShowCart(true)} />
-      <ProductsList />
-      <CartDrawer show={showCart} handleClose={() => setShowCart(false)} />
+    <CartProvider>
+      <BrowserRouter>
+        <AppNavbar onCartClick={() => setShowCart(true)} />
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/store" element={<ProductsList />} />
+  {/* <Route path="/about" element={<About />} /> optional */}
+</Routes>
+
+        <CartDrawer show={showCart} handleClose={() => setShowCart(false)} />
+      </BrowserRouter>
     </CartProvider>
   );
 }
