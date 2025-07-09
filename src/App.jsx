@@ -5,6 +5,7 @@ import AppNavbar from './components/AppNavbar';
 import ProductsList from './components/ProductsList';
 import Home from './components/Home/Home';
 import { CartProvider } from './components/CartContext';
+import About from './components/About/About';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -16,7 +17,7 @@ function App() {
 <Routes>
   <Route path="/" element={<Home />} />
   <Route path="/store" element={<ProductsList />} />
-  {/* <Route path="/about" element={<About />} /> optional */}
+  <Route path="/about" element={<About />} /> optional
 </Routes>
 
         <CartDrawer show={showCart} handleClose={() => setShowCart(false)} />

@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { FaRegPlayCircle } from 'react-icons/fa';
 import HomeTour from './HomeTour';
-import HomeFooter from './HomeFooter';
+import Footer from '../Footer';
 
 const Home = () => {
   return (
@@ -19,7 +19,7 @@ const Home = () => {
       </div>
 
       <HomeTour />
-      <HomeFooter />
+      <Footer />
     </Container>
   );
 };

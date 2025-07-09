@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap';
 
-const HomeFooter = () => {
+const Footer = () => {
   return (
     <Container fluid>
       <div className="text-center bg-primary py-5 w-100 ">
@@ -12,4 +12,4 @@ const HomeFooter = () => {
   )
 }
 
-export default HomeFooter
+export default Footer
