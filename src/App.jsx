@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CartDrawer from './components/CartDrawer';
 import AppNavbar from './components/AppNavbar';
-import ProductsList from './components/ProductsList';
+import ProductsList from './components/Product/ProductsList';
 import Home from './components/Home/Home';
 import { CartProvider } from './components/CartContext';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
+import ProductDetailPage from './components/Product/ProductDetailPage';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -20,6 +21,7 @@ function App() {
   <Route path="/store" element={<ProductsList />} />
   <Route path="/about" element={<About />} /> optional
   <Route path="/contact" element={<Contact />} /> optional
+  <Route path="/product/:productId" element={<ProductDetailPage />} />
 </Routes>
 
         <CartDrawer show={showCart} handleClose={() => setShowCart(false)} />
