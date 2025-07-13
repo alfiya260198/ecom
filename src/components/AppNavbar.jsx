@@ -23,6 +23,9 @@ const AppNavbar = ({ onCartClick }) => {
           <Nav.Link as={NavLink} to="/about">
             About
           </Nav.Link>
+          <Nav.Link as={NavLink} to="/contact">
+            Contact
+          </Nav.Link>
         </Nav>
 
         {isStorePage && (
