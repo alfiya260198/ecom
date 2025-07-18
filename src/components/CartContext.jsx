@@ -1,10 +1,12 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [token, setToken] = useState(() => localStorage.getItem('token') || '');
 
+  // 👇 Cart Logic
   const addToCart = (product) => {
     setCartItems((prevItems) => {
       const existing = prevItems.find(item => item.title === product.title);
@@ -26,8 +28,29 @@ export const CartProvider = ({ children }) => {
 
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
+  // 👇 Auth logic
+  const login = (newToken) => {
+    localStorage.setItem('token', newToken);
+    setToken(newToken);
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    setToken('');
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, totalQuantity }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        totalQuantity,
+        token,
+        login,
+        logout,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
