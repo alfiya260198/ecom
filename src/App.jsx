@@ -1,7 +1,5 @@
-// ❌ REMOVE BrowserRouter here (already added in main.jsx)
-
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom'; // ✅ Only Routes and Route
+import { Routes, Route } from 'react-router-dom';
 import CartDrawer from './components/CartDrawer';
 import AppNavbar from './components/AppNavbar';
 import ProductsList from './components/Product/ProductsList';
@@ -13,6 +11,7 @@ import LoginForm from './components/Login/LoginForm';
 import { CartProvider } from './components/CartContext';
 import { AuthProvider } from './AuthContext';
 import Signup from './components/Signup/Signup';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -23,12 +22,20 @@ function App() {
         <AppNavbar onCartClick={() => setShowCart(true)} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/store" element={<ProductsList />} />
+          <Route
+  path="/store"
+  element={
+    <PrivateRoute>
+      <ProductsList />
+    </PrivateRoute>
+  }
+/>
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/product/:productId" element={<ProductDetailPage />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path='/signup' element={<Signup />} />
+          
         </Routes>
         <CartDrawer show={showCart} handleClose={() => setShowCart(false)} />
       </CartProvider>

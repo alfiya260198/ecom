@@ -17,13 +17,12 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
   };
 
-  // Optional: Auto logout after 1 minute
   useEffect(() => {
     if (token) {
       const timer = setTimeout(() => {
         logout();
         console.log('⏰ Token expired. Logged out automatically.');
-      }, 60000); // 1 minute
+      }, 60000);
 
       return () => clearTimeout(timer);
     }
