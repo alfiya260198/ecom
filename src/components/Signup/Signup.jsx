@@ -32,8 +32,9 @@ const Signup = () => {
       setLoading(false);
       navigate('/login');
     } catch (err) {
-      console.error(err);
-      setError('Signup failed. Please try again.');
+      console.error(err.response?.data?.error?.message || err.message);
+setError(err.response?.data?.error?.message || 'Signup failed.');
+
       setLoading(false);
     }
   };
