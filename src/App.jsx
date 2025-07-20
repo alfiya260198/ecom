@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import CartDrawer from './components/CartDrawer';
+import CartDrawer from './components/Cart/CartDrawer';
 import AppNavbar from './components/AppNavbar';
 import ProductsList from './components/Product/ProductsList';
 import Home from './components/Home/Home';
@@ -8,7 +8,7 @@ import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import ProductDetailPage from './components/Product/ProductDetailPage';
 import LoginForm from './components/Login/LoginForm';
-import { CartProvider } from './components/CartContext';
+import { CartProvider } from './components/Cart/CartContext';
 import { AuthProvider } from './AuthContext';
 import Signup from './components/Signup/Signup';
 import PrivateRoute from './components/PrivateRoute';
